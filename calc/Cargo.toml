@@ -1,0 +1,21 @@
+[package]
+name = "calc"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+wasmtime = "28.0.1"
+wasmtime-wasi = "28.0.1"
+wit-bindgen-rt = { version = "0.37.0", features = ["bitflags"] }
+
+[profile.release]
+codegen-units = 1
+opt-level = "s"
+debug = false
+strip = true
+lto = true
+
+[package.metadata.component]
+package = "component:calc"
+
+[package.metadata.component.dependencies]

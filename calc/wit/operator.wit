@@ -1,0 +1,6 @@
+package calc:operator;
+
+world operator {
+    export compute: func(x: s32, y: s32) -> s32;
+    export name: func() -> string;
+}
