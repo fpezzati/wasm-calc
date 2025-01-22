@@ -52,3 +52,8 @@ Still on the 'missing wasi:cli/environment' weird issue.
 
 Important note: the bindgen! call is key to generate stubs accordignly to wit. I probably had to build as soon as I added the bindgen call and then add code to instantiate my component.
 I did, driven by cut-n-paste, to add everything at once and I got confused by compile errors.
+
+## 20250122
+Got it! Key concept is that .wit files are some sort of abstractions, they don't specify all the required dependencies the
+rust app needs to load the wasip2 component, so, adding `wasmtime_wasi::add_to_linker_sync(&mut linker);` in my host app does
+the trick passing wasmtime all the mandatory but untold dependencies.

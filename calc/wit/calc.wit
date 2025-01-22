@@ -1,6 +1,0 @@
-package calc:main;
-
-world main {
-    import calc:operator/compute;
-    import calc:operator/name;
-}
