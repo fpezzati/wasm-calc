@@ -55,5 +55,9 @@ I did, driven by cut-n-paste, to add everything at once and I got confused by co
 
 ## 20250122
 Got it! Key concept is that .wit files are some sort of abstractions, they don't specify all the required dependencies the
-rust app needs to load the wasip2 component, so, adding `wasmtime_wasi::add_to_linker_sync(&mut linker);` in my host app does
-the trick passing wasmtime all the mandatory but untold dependencies.
+rust app needs to load the wasip2 component. So, I added `wasmtime_wasi` as cargo dependency, then I added
+```
+wasmtime_wasi::add_to_linker_sync(&mut linker);
+```
+in my host app. That does the trick passing wasmtime all the mandatory but untold wasip2 world shipped into the crate, allowing
+me to successfully instantiate component.
